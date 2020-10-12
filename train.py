@@ -54,27 +54,20 @@ if __name__ == '__main__':
 
     # make output dir
     output_dir = opt.output_dir
-    if os.path.exists(output_dir):
-        raise KeyError("Existing path: ", output_dir)
-    os.makedirs(output_dir)
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
 
     # copy codes and config file
-    files = list_dir_recursively_with_ignore('.', ignores=['diagrams', 'configs'])
-    files = [(f[0], os.path.join(output_dir, "src", f[1])) for f in files]
-    copy_files_and_create_dirs(files)
-    shutil.copy2(args.config, output_dir)
+    #files = list_dir_recursively_with_ignore('.', ignores=['diagrams', 'configs'])
+    #files = [(f[0], os.path.join(output_dir, "src", f[1])) for f in files]
+    #copy_files_and_create_dirs(files)
+    #shutil.copy2(args.config, output_dir)
 
     # logger
     logger = make_logger("project", opt.output_dir, 'log')
 
     # device
-    if opt.device == 'cuda':
-        os.environ['CUDA_VISIBLE_DEVICES'] = opt.device_id
-        num_gpus = len(opt.device_id.split(','))
-        logger.info("Using {} GPUs.".format(num_gpus))
-        logger.info("Training on {}.\n".format(torch.cuda.get_device_name(0)))
-        cudnn.benchmark = True
-    device = torch.device(opt.device)
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
     # create the dataset for training
     dataset = make_dataset(opt.dataset)
