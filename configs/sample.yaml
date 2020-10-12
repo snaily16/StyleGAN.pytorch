@@ -1,6 +1,6 @@
 # Config file for CelebA dataset (200k)
 
-output_dir: 'checkpoints/StyleGAN/'
+output_dir: 'content/gdrive/My\ Drive/checkpoints/depth5/'
 structure: 'linear'
 device_id: ('3')
 dataset:
