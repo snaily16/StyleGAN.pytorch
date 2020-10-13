@@ -1,6 +1,6 @@
 # Config file for CelebA dataset (200k)
 
-output_dir: 'content/gdrive/My\ Drive/checkpoints/depth5/'
+output_dir: 'gdrive/My Drive/depth/'
 structure: 'linear'
 device_id: ('3')
 dataset:
