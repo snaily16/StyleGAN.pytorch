@@ -697,7 +697,7 @@ class StyleGAN:
                 elapsed = str(datetime.timedelta(seconds=elapsed)).split('.')[0]
                 logger.info("Time taken for epoch: %s\n" % elapsed)
 
-                if epoch % checkpoint_factor == 0 or epoch == 1 or epoch == epochs[current_depth]:
+                if True or epoch % checkpoint_factor == 0 or epoch == 1 or epoch == epochs[current_depth]:
                     save_dir = os.path.join(output, 'models')
                     os.makedirs(save_dir, exist_ok=True)
                     gen_save_file = os.path.join(save_dir, "GAN_GEN_" + str(current_depth) + "_" + str(epoch) + ".pth")
